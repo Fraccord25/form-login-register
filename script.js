@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
         tab.addEventListener('click', function() {
             tabs.forEach(t => t.classList.remove('active'));
             contents.forEach(c => c.classList.remove('active'));
+            
             this.classList.add('active');
             const tabId = this.getAttribute('data-tab');
             document.getElementById(tabId).classList.add('active');
@@ -14,9 +15,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const loginForm = document.getElementById('loginForm');
     const loginMessage = document.getElementById('loginMessage');
-    
+
     loginForm.addEventListener('submit', function(e) {
         e.preventDefault();
+
         const username = document.getElementById('loginUsername').value;
         const password = document.getElementById('loginPassword').value;
 
@@ -36,12 +38,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     registerForm.addEventListener('submit', function(e) {
         e.preventDefault();
+
         const username = document.getElementById('registerUsername').value;
         const email = document.getElementById('registerEmail').value;
         const password = document.getElementById('registerPassword').value;
         const confirmPassword = document.getElementById('registerConfirmPassword').value;
 
-        if (username.trim() === '' || email.trim() === '' || password.trim() === '' || confirmPassword.trim() === '') {
+        if (!username || !email || !password || !confirmPassword) {
             showMessage(registerMessage, 'All fields are required!', 'error');
             return;
         }
@@ -59,8 +62,9 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
             showMessage(registerMessage, `Account created for ${username}! You can now login.`, 'success');
             registerForm.reset();
-            document.querySelector('.auth-tab[data-tab="register"]').classList.remove('active');
-            document.getElementById('register').classList.remove('active');
+
+            tabs.forEach(t => t.classList.remove('active'));
+            contents.forEach(c => c.classList.remove('active'));
             document.querySelector('.auth-tab[data-tab="login"]').classList.add('active');
             document.getElementById('login').classList.add('active');
         }, 1500);
@@ -71,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
         element.className = 'message';
         element.classList.add(type);
         element.style.display = 'block';
+
         setTimeout(() => {
             element.style.display = 'none';
         }, 5000);
@@ -79,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const promptText = "Authentication System v1.0";
     const promptElement = document.querySelector('.prompt');
     promptElement.textContent = "";
+
     let i = 0;
     const typeWriter = setInterval(() => {
         if (i < promptText.length) {
