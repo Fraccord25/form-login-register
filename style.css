@@ -66,17 +66,9 @@ body {
     cursor: pointer;
 }
 
-.close {
-    background-color: var(--terminal-red);
-}
-
-.minimize {
-    background-color: var(--terminal-yellow);
-}
-
-.maximize {
-    background-color: var(--terminal-green);
-}
+.close { background-color: var(--terminal-red); }
+.minimize { background-color: var(--terminal-yellow); }
+.maximize { background-color: var(--terminal-green); }
 
 .terminal-body {
     padding: 20px;
@@ -106,12 +98,13 @@ body {
 }
 
 .auth-tab {
-    padding: 10px 20px;
+    padding: 8px 15px;
     cursor: pointer;
     color: var(--text-secondary);
     border-bottom: 3px solid transparent;
     transition: all 0.3s ease;
-    font-size: 14px;
+    font-size: 13px;
+    white-space: nowrap;
 }
 
 .auth-tab.active {
@@ -198,24 +191,7 @@ body {
 }
 
 @media (max-width: 480px) {
-    .terminal-body {
-        padding: 15px;
-    }
-    
-    .auth-tabs {
-        flex-direction: column;
-        border-bottom: none;
-    }
-
-    .auth-tab {
-        border-bottom: 1px solid var(--border-dark);
-        border-left: 3px solid transparent;
-        padding: 10px;
-    }
-
-    .auth-tab.active {
-        border-bottom: 1px solid var(--border-dark);
-        border-left: 3px solid var(--terminal-blue);
-        border-bottom: 3px solid transparent;
-    }
+    .terminal-body { padding: 15px; }
+    .auth-tabs { gap: 15px; border-bottom: none; }
+    .auth-tab { padding: 8px 12px; }
 }
